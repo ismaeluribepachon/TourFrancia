@@ -1,0 +1,694 @@
+/* -------------------------------- 
+
+Estilo de reseteo
+
+-------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main{
+    display:block;
+}
+
+body{
+    line-height: 1;
+}
+
+ol, ul{
+    list-style: none;
+}
+
+blockquote, q{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a{
+    outline: none;
+}
+
+/* -------------------------------- 
+
+Estilo principal
+
+-------------------------------- */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; 
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    background-color: #262626;
+}
+
+a {
+    text-decoration: none; 
+}
+
+/* -------------------------------- 
+
+Contenido del footer
+
+-------------------------------- */
+
+footer{
+    text-align: center;
+    padding-left:3em;
+    padding-right:3em;
+    overflow: hidden;
+    background-color: #FABB00;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-content:center;
+}
+
+footer section:nth-child(1){
+    padding-top: 1em;
+    overflow: hidden;
+    height: 200px;
+}
+
+footer img{
+    height: 100px;
+}
+
+footer p{
+    font-size: 15px;
+}
+
+footer section{
+    width: 33%;
+}
+
+footer a{
+    color: #262626;
+}
+
+/* -------------------------------- 
+
+Contenido del main
+
+-------------------------------- */
+.header {
+    height: 80px;
+    width: 90%;
+    margin: 0 auto;
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    transition: transform 0.5s;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.header:after {
+    content: "";
+}
+.header.nav-is-visible {
+    -webkit-transform: translateY(80px);
+    -moz-transform: translateY(80px);
+    -ms-transform: translateY(80px);
+    -o-transform: translateY(80px);
+    transform: translateY(80px); 
+}
+@media only screen and (min-width: 768px) {
+    .header.nav-is-visible {
+        -webkit-transform: translateY(120px);
+        -moz-transform: translateY(120px);
+        -ms-transform: translateY(120px);
+        -o-transform: translateY(120px);
+        transform: translateY(120px); 
+    } 
+}
+
+.menu-launcher {
+    cursor: pointer;
+    position: relative;
+    float: right;
+    height: 45px;
+    width: 45px;
+    margin-top: 18px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+}
+.menu-launcher span,
+.menu-launcher span::before,
+.menu-launcher span::after {
+    /* El icono de la hamburguesa en CSS */
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background-color: #fabb00;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; 
+}
+.menu-launcher span {
+    /* La linea central */
+    top: 21px;
+    right: 5em;
+    -webkit-transition: background 0.2s 0.5s;
+    -moz-transition: background 0.2s 0.5s;
+    transition: background 0.2s 0.5s; 
+}
+.menu-launcher span::before, .menu-launcher span:after {
+    /* Las lineas superior e inferior */
+    content: '';
+    left: 0;
+    -webkit-transition: -webkit-transform 0.2s 0.5s;
+    -moz-transition: -moz-transform 0.2s 0.5s;
+    transition: transform 0.2s 0.5s; 
+}
+.menu-launcher span::before {
+    bottom: 8px; 
+}
+.menu-launcher span::after {
+    top: 8px; 
+}
+.nav-is-visible .menu-launcher span {
+    /* Al sacar la barra de navegación ocultamos la linea central */
+    background-color: rgba(255, 255, 255, 0); 
+}
+.nav-is-visible .menu-launcher span::before, .nav-is-visible .menu-launcher span::after {
+    /* Dejamos visibles las otras dos */
+    background-color: #fabb00; 
+}
+.nav-is-visible .menu-launcher span::before {
+    -webkit-transform: translateY(8px) rotate(-45deg);
+    -moz-transform: translateY(8px) rotate(-45deg);
+    -ms-transform: translateY(8px) rotate(-45deg);
+    -o-transform: translateY(8px) rotate(-45deg);
+    transform: translateY(8px) rotate(-45deg); 
+}
+.nav-is-visible .menu-launcher span::after {
+    -webkit-transform: translateY(-8px) rotate(45deg);
+    -moz-transform: translateY(-8px) rotate(45deg);
+    -ms-transform: translateY(-8px) rotate(45deg);
+    -o-transform: translateY(-8px) rotate(45deg);
+    transform: translateY(-8px) rotate(45deg); 
+}
+
+.nav-container {
+    /* El contenedor del menu de navegación en 3D */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #000;
+    visibility: hidden;
+    /* enable a 3D-space for children elements */
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0.5s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0.5s;
+    transition: transform 0.5s 0s, visibility 0s 0.5s; 
+}
+.nav-container.nav-is-visible {
+    visibility: visible;
+    z-index: 10;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0.5s 0s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0.5s 0s;
+    transition: transform 0.5s 0s, visibility 0.5s 0s; 
+}
+@media only screen and (min-width: 768px) {
+    .nav-container {
+        height: 120px; 
+    } 
+}
+
+.nav-ul {
+    position: relative;
+    height: 100%;
+    background-color: #fabb00;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: center bottom;
+    -moz-transform-origin: center bottom;
+    -ms-transform-origin: center bottom;
+    -o-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    -ms-transform: rotateX(90deg);
+    -o-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    transition: transform 0.5s; 
+}
+.nav-ul::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fabb00;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.5s 0s, visibility 0.5s 0s;
+    -moz-transition: opacity 0.5s 0s, visibility 0.5s 0s;
+    transition: opacity 0.5s 0s, visibility 0.5s 0s; 
+}
+.nav-ul li {
+    height: 100%;
+    width: 20%;
+    float: left;
+}
+
+.nav-ul li:first-of-type a::before {
+    background-image: url(../img/menu/home.svg); 
+}
+.nav-ul li:nth-of-type(2) a::before {
+    background-image: url(../img/menu/ciclista.svg); 
+}
+.nav-ul li:nth-of-type(3) a::before {
+    background-image: url(../img/menu/puerto.svg); 
+}
+.nav-ul li:nth-of-type(4) a::before {
+    background-image: url(../img/menu/podio.svg); 
+}
+.nav-ul li:nth-of-type(5) a::before {
+    background-image: url(../img/menu/admin.svg); 
+}
+.nav-ul a {
+    position: relative;
+    display: block;
+    height: 100%;
+    color: transparent;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    transition: background-color 0.2s; 
+}
+.nav-ul a::before {
+    /* navigation icons */
+    content: '';
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-size: 32px 64px;
+    background-repeat: no-repeat;
+    background-position: 0 0; 
+}
+.no-touch .nav-ul a:hover {
+    background-color: #2b3145; 
+}
+.nav-ul .selected a {
+    background-color: #e6ac00; 
+}
+.no-touch .nav-ul .selected a:hover {
+    background-color: #212635; 
+}
+.nav-ul .selected a::before {
+    background-position: 0 -32px; 
+}
+.nav-is-visible .nav-ul {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0); 
+}
+.nav-is-visible .nav-ul::after {
+    /* menu cover layer - hide it when navigation is visible */
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s 0s, visibility 0s 0.5s;
+    -moz-transition: opacity 0.5s 0s, visibility 0s 0.5s;
+    transition: opacity 0.5s 0s, visibility 0s 0.5s; 
+}
+@media only screen and (min-width: 768px) {
+    
+    footer img{
+        height: 200px !important;
+    }
+    footer p{
+        font-size: 18px !important;
+    }
+    footer{
+        height: 300px !important;
+    }
+    footer section:nth-child(1){
+        padding-top: 3em !important;
+    }
+    .nav-ul a {
+        padding: 5.6em 1em 0;
+        color: #000;
+        font-size: 1.3rem;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .selected a{
+        color:white;
+    }
+    .nav-ul a::before {
+        top: 2.4em;
+        left: 50%;
+        right: auto;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); 
+    } 
+}
+
+.marker {
+    /* line at the bottom of nav selected item */
+    color: #262626; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    background-color: currentColor;
+    -webkit-transform-origin: center bottom;
+    -moz-transform-origin: center bottom;
+    -ms-transform-origin: center bottom;
+    -o-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-transform: translateZ(0) rotateX(90deg);
+    -moz-transform: translateZ(0) rotateX(90deg);
+    -ms-transform: translateZ(0) rotateX(90deg);
+    -o-transform: translateZ(0) rotateX(90deg);
+    transform: translateZ(0) rotateX(90deg);
+    -webkit-transition: -webkit-transform 0.5s, left 0.5s, color 0.5s, background-color 0.5s;
+    -moz-transition: -moz-transform 0.5s, left 0.5s, color 0.5s, background-color 0.5s;
+    transition: transform 0.5s, left 0.5s, color 0.5s, background-color 0.5s; 
+}
+.marker::before {
+    /* triangle at the bottom of nav selected item */
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    height: 0;
+    width: 0;
+    border: 10px solid transparent;
+    border-bottom-color: inherit; 
+}
+.nav-is-visible .marker {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+}
+
+main, footer {
+    font-size: 18px;
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    transition: transform 0.5s;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding-top: 3em;
+    padding-bottom: 5em;
+}
+header h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: #afafaf;
+    margin: 2em auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+main.nav-is-visible, footer.nav-is-visible  {
+    -webkit-transform: translateY(80px);
+    -moz-transform: translateY(80px);
+    -ms-transform: translateY(80px);
+    -o-transform: translateY(80px);
+    transform: translateY(80px); 
+}
+@media only screen and (min-width: 768px) {
+    main.nav-is-visible, footer.nav-is-visible {
+        -webkit-transform: translateY(120px);
+        -moz-transform: translateY(120px);
+        -ms-transform: translateY(120px);
+        -o-transform: translateY(120px);
+        transform: translateY(120px); }
+    header h1 {
+        font-size: 3.6rem;
+        margin: 4em auto; 
+    } 
+}
+
+header{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+header>.flags{
+    position:relative;
+    margin-left: -35px;
+    flex-grow: 1;
+}
+
+.flags img{
+    height: 13px;
+}
+
+header>h1{
+    padding-left: 1em;
+    flex-grow: 3;
+}
+
+header>a{
+    flex-grow: 1;
+}
+
+.flags, header h1{
+    margin-top: 32px;
+    color: #afafaf;
+}
+
+main p{
+    padding-top: 30px;
+    color: #cfcfcf;
+}
+
+#inicio1, #inicio2,main section{
+    padding-left: calc(5% + 3em);
+    padding-right: calc(5% + 3em);
+}
+
+#inicioImg{
+    width: 100%;
+    padding: 0;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    background-image: url(../img/inicioImg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 10%;
+    height: 300px;
+}
+
+#inicioImg div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top:0;
+    left: 0;
+    background-color: rgba(250, 187, 0, 0.5);
+}
+
+md-overlay img{
+    margin: calc(50% - 100px) calc(50% - 100px) auto auto;
+}
+
+#busquedaCiclista, #busquedaEquipo, #etapasBusqueda, #login{
+    text-align: center;
+}
+
+.cromoEquipo{
+    padding-top: 1.2em;
+    margin:0 auto;
+    display: none;
+    margin-top: 2em;
+    height: 100px;
+    width: 300px;
+    border-radius: 3px;
+    background-color: #ffbb00;
+}
+
+
+#busquedaEquipo{
+    background-color: #ccc;
+    width: 100%;
+    padding: 0;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+}
+
+#busquedaEquipo p{
+    color:black;
+}
+
+#busquedaEquipo select{
+    background-color: #000;
+    color:white;
+}
+
+section.cromosCiclistas{
+    margin-top: 2em;
+}
+
+article.cromoCiclista, article.cromoPuerto, article.cromoEtapa{
+    display: inline-flex;
+    flex-direction: column;
+    padding-top: 3em;
+    width: 400px;
+    height: 200px;
+    background-color: #ffbb00;
+    margin:5px;
+}
+
+article.cromoCiclista>span, article.cromoPuerto>span{
+    display:block;
+}
+
+
+#buscarPuertosCategoria, #cromosEtapas{
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+}
+
+#buscarPuertosCategoria p{
+    padding-left: calc(5% + 3em);
+    padding-right: calc(5% + 3em);
+}
+
+.btn-admin{
+    margin-bottom: 1em;
+}
+
+.btn-admin button{
+    margin:5px;
+    width: 56px;
+    height: 56px;
+    font-size: 25px;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+
+
+.button-mas{
+    background-image: url(../img/admin/mas.svg); 
+}
+
+.button-menos{
+    background-image: url(../img/admin/menos.svg); 
+}
+
+.button-editar{
+    background-image: url(../img/admin/editar.svg); 
+}
+
+.button-mas, .button-menos, .button-editar{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: calc(100% - 40px);
+}
+.button-mas:hover, .button-menos:hover, .button-editar:hover{ 
+    transform: rotate(360deg);
+}
+
+.btn-admin button:disabled{
+    background-color: #ccc;
+}
+
+.btn-admin button:disabled:hover{
+   transform: rotate(0deg);
+}
+
+.md-modal{
+    text-align: center;
+}
+
+.inline{
+    display: inline-flex;
+}
+
+.inline *{
+    margin: 5px;
+}
+
+section#errors p{
+    text-align: center;
+    color:red;
+}
